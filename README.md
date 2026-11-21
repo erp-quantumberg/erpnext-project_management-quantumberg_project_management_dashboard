@@ -27,10 +27,10 @@ The dashboard is available in Desk at **Project Management Dashboard** (route: `
 
 Install these apps on the same bench, using compatible version 16 branches:
 
-| Dependency app | Required version | Purpose |
-| --- | --- | --- |
-| Frappe Framework | Version 16 | Provides the Frappe runtime, Desk, and bench environment. |
-| ERPNext | Version 16 | Required for the Project, Task, Timesheet, and accounting data displayed by the dashboard. |
+| Dependency app   | Required version | Purpose                                                                                    |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------------------ |
+| Frappe Framework | Version 16       | Provides the Frappe runtime, Desk, and bench environment.                                  |
+| ERPNext          | Version 16       | Required for the Project, Task, Timesheet, and accounting data displayed by the dashboard. |
 
 Install ERPNext on the site before installing this dashboard. ERPNext is not currently declared in this app's `required_apps` hook, so Bench will not install it automatically.
 
@@ -48,7 +48,7 @@ From an existing bench directory, fetch the app from this repository's `version-
 
 ```bash
 cd /path/to/frappe-bench
-bench get-app https://github.com/manoharkariyappa/quantumberg_project_management_dashboard.git --branch version-16
+bench get-app https://github.com/erp-quantumberg/erpnext-project_management-quantumberg_project_management_dashboard.git --branch version-16
 ```
 
 Ensure ERPNext version 16 is installed on the bench and site. If it is not already installed, fetch the matching ERPNext branch and install it before this dashboard:
@@ -103,15 +103,15 @@ The development server listens on port `8080` and proxies API, asset, and file r
 
 ## Troubleshooting
 
-| Problem | Checks and remedies |
-| --- | --- |
-| The dashboard page is missing or access is denied | Confirm the app is installed on the site, the user has one of the configured Desk page roles, and the user can sign in to Desk. Run `bench --site your-site.example list-apps` to check installed apps. |
-| Dashboard sections are empty | Confirm ERPNext is installed and the site contains Project, Task, or Timesheet records relevant to the selected date range. A project user must be a Project User member or project owner. |
-| Financial or team sections are hidden | These sections are restricted to Projects Managers, System Managers, and Administrators. Check the user's roles and reload the page. |
-| Vite fails to start because `common_site_config.json` cannot be found | Run the frontend from the `frontend/` directory inside the installed bench app, and verify that the bench `sites/common_site_config.json` exists. |
-| API requests fail in development | Start `bench start`, check the configured Frappe web-server port in `sites/common_site_config.json`, and verify that the logged-in browser session can access the site. |
-| Frontend changes do not appear in Desk | Run `npm run build` from `frontend/`, then `bench build --app quantumberg_project_management_dashboard`. Hard-refresh the browser to bypass cached assets. |
-| Build reports missing frontend packages | Run `npm install` from `apps/quantumberg_project_management_dashboard/frontend/` and retry the build. |
+| Problem                                                               | Checks and remedies                                                                                                                                                                                     |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The dashboard page is missing or access is denied                     | Confirm the app is installed on the site, the user has one of the configured Desk page roles, and the user can sign in to Desk. Run `bench --site your-site.example list-apps` to check installed apps. |
+| Dashboard sections are empty                                          | Confirm ERPNext is installed and the site contains Project, Task, or Timesheet records relevant to the selected date range. A project user must be a Project User member or project owner.              |
+| Financial or team sections are hidden                                 | These sections are restricted to Projects Managers, System Managers, and Administrators. Check the user's roles and reload the page.                                                                    |
+| Vite fails to start because `common_site_config.json` cannot be found | Run the frontend from the `frontend/` directory inside the installed bench app, and verify that the bench `sites/common_site_config.json` exists.                                                       |
+| API requests fail in development                                      | Start `bench start`, check the configured Frappe web-server port in `sites/common_site_config.json`, and verify that the logged-in browser session can access the site.                                 |
+| Frontend changes do not appear in Desk                                | Run `npm run build` from `frontend/`, then `bench build --app quantumberg_project_management_dashboard`. Hard-refresh the browser to bypass cached assets.                                              |
+| Build reports missing frontend packages                               | Run `npm install` from `apps/quantumberg_project_management_dashboard/frontend/` and retry the build.                                                                                                   |
 
 ## Contributing
 
